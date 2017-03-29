@@ -1,0 +1,42 @@
+{% extends "BlogBundle::layout.html.twig" %}
+
+
+{% block content %}
+    <h2>Todas Las Categorias</h2>
+    <div class="col-md-8">
+    <hr>
+    {%for message in app.session.flashbag().get("status")%}
+                <div class="alert alert-success"> {{message}} </div>
+    {% endfor %}
+    <a href="{{path("blog_category_add")}}" >Añadir Categoria</a>
+    <table class="table table-bordered table-striped" >
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+    {%for category in categories%}
+           <tr>
+            <td>
+                {{ category.name }}
+             </td>
+             <td>
+                {{ category.description }}
+             </td>
+             <td>
+                    <a href="{{path("blog_category_edit", {"id":category.id})}}" class="btn btn-info">Editar</a>
+               
+             </td>
+              <td>
+                    <a href="{{path("blog_category_delete", {"id":category.id})}}" class="btn btn-danger">Eliminar</a>
+               
+             </td>
+
+            </tr>
+    {%endfor%}
+    </table>
+    </div>
+    <div class="clearfix"></div>
+    
+{% endblock %}

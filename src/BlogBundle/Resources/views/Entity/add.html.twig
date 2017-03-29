@@ -1,0 +1,11 @@
+{% extends "BlogBundle::layout.html.twig" %}
+{% block content %}
+    <h2>Generar entrada</h2>
+    <div class="col-lg-4">
+        {{form_start(form, {"encrtype":"multipart/form-data"})}}
+        {{form_end(form)}}
+        
+    </div>
+    <div class="clearfix"></div>
+
+{% endblock %}

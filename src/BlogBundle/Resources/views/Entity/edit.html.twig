@@ -1,0 +1,12 @@
+{% extends "BlogBundle::layout.html.twig" %}
+{% block content %}
+    <h2>Editar entrada</h2>
+    <div class="col-lg-4">
+        {{form_start(form, {"encrtype":"multipart/form-data"})}}
+            <img width="100" src="{{ asset("uploads/"~entry.image)}}"/>
+        {{form_end(form)}}
+        
+    </div>
+    <div class="clearfix"></div>
+
+{% endblock %}

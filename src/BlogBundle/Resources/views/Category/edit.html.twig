@@ -1,0 +1,10 @@
+{% extends "BlogBundle::layout.html.twig" %}
+{% block content %}
+    <div class="col-lg-4">
+        {{form_start(form, {'action':'', 'method':'POST'})}}
+        {{form_end(form)}}
+        
+    </div>
+    <div class="clearfix"></div>
+
+{% endblock %}

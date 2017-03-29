@@ -1,0 +1,40 @@
+{% extends "BlogBundle::layout.html.twig" %}
+
+{% block menu %}
+    {% include "BlogBundle:Category:menuCategories.html.twig" with {"categories": category }  %}
+{% endblock %}
+
+
+{% block content %}
+
+
+{% for entry in category.entries%}
+    <div class="col-lg-11">
+        <p class="pull-left" style="margin-right:20px;"><img width="200" src="{{ asset("uploads/"~entry.image)}}"/></p>
+        <p><strong>{{entry.title}}</strong></p>
+        <p>{{entry.category.name}}</p>
+        <p>Autor:{{entry.user.name}}</p>
+        
+        <p>
+            {% for et in entry.entryTag %}
+                {{et.tag.name}}
+            {% endfor %}
+        </p>
+        
+        <p>
+            {%if((app.user.id is defined) and (app.user.id==entry.user.id))%}
+                <a href="{{path("blog_entry_edit", {"id":entry.id})}}" class="btn btn-danger">Editar</a>
+                <a href="{{path("blog_entry_delete", {"id":entry.id})}}" class="btn btn-danger">Eliminar</a>
+            {%endif%}
+        </p>
+
+        
+       
+        <hr/>
+    </div>
+    
+    
+{% endfor %}
+    
+
+{% endblock %}
